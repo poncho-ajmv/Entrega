@@ -1,49 +1,50 @@
 import React from 'react'
 import { Footer, Navbar } from "../components";
 import { Link } from 'react-router-dom';
+
 const Register = () => {
     return (
         <>
             <Navbar />
             <div className="container my-3 py-3">
-                <h1 className="text-center">Register</h1>
+                <h1 className="text-center">Registro</h1>
                 <hr />
-                <div class="row my-4 h-100">
+                <div className="row my-4 h-100">
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
                         <form>
-                            <div class="form my-3">
-                                <label for="Name">Full Name</label>
+                            <div className="form my-3">
+                                <label htmlFor="Name">Nombre completo</label>
                                 <input
-                                    type="email"
-                                    class="form-control"
+                                    type="text"
+                                    className="form-control"
                                     id="Name"
-                                    placeholder="Enter Your Name"
+                                    placeholder="Ingresa tu nombre"
                                 />
                             </div>
-                            <div class="form my-3">
-                                <label for="Email">Email address</label>
+                            <div className="form my-3">
+                                <label htmlFor="Email">Correo electrónico</label>
                                 <input
                                     type="email"
-                                    class="form-control"
+                                    className="form-control"
                                     id="Email"
-                                    placeholder="name@example.com"
+                                    placeholder="ejemplo@correo.com"
                                 />
                             </div>
-                            <div class="form  my-3">
-                                <label for="Password">Password</label>
+                            <div className="form my-3">
+                                <label htmlFor="Password">Contraseña</label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     id="Password"
-                                    placeholder="Password"
+                                    placeholder="Contraseña"
                                 />
                             </div>
                             <div className="my-3">
-                                <p>Already has an account? <Link to="/login" className="text-decoration-underline text-info">Login</Link> </p>
+                                <p>¿Ya tienes una cuenta? <Link to="/login" className="text-decoration-underline text-info">Iniciar sesión</Link></p>
                             </div>
                             <div className="text-center">
-                                <button class="my-2 mx-auto btn btn-dark" type="submit" disabled>
-                                    Register
+                                <button className="my-2 mx-auto btn btn-dark" type="submit">
+                                    Registrarse
                                 </button>
                             </div>
                         </form>

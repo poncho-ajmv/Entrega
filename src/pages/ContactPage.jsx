@@ -1,49 +1,50 @@
 import React from "react";
 import { Footer, Navbar } from "../components";
+
 const ContactPage = () => {
   return (
     <>
       <Navbar />
       <div className="container my-3 py-3">
-        <h1 className="text-center">Contact Us</h1>
+        <h1 className="text-center">Contáctanos</h1>
         <hr />
-        <div class="row my-4 h-100">
+        <div className="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
             <form>
-              <div class="form my-3">
-                <label for="Name">Name</label>
+              <div className="form my-3">
+                <label htmlFor="Name">Nombre</label>
                 <input
-                  type="email"
-                  class="form-control"
+                  type="text"
+                  className="form-control"
                   id="Name"
-                  placeholder="Enter your name"
+                  placeholder="Ingresa tu nombre"
                 />
               </div>
-              <div class="form my-3">
-                <label for="Email">Email</label>
+              <div className="form my-3">
+                <label htmlFor="Email">Correo electrónico</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="Email"
-                  placeholder="name@example.com"
+                  placeholder="ejemplo@correo.com"
                 />
               </div>
-              <div class="form  my-3">
-                <label for="Password">Message</label>
+              <div className="form  my-3">
+                <label htmlFor="Message">Mensaje</label>
                 <textarea
                   rows={5}
-                  class="form-control"
-                  id="Password"
-                  placeholder="Enter your message"
+                  className="form-control"
+                  id="Message"
+                  placeholder="Escribe tu mensaje"
                 />
               </div>
               <div className="text-center">
                 <button
-                  class="my-2 px-4 mx-auto btn btn-dark"
+                  className="my-2 px-4 mx-auto btn btn-dark"
                   type="submit"
                   disabled
                 >
-                  Send
+                  Enviar
                 </button>
               </div>
             </form>
