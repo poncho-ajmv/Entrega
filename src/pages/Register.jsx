@@ -1,59 +1,78 @@
-import React from 'react'
-import { Footer, Navbar } from "../components";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { Navbar, Footer } from "../components";
 
 const Register = () => {
-    return (
-        <>
-            <Navbar />
-            <div className="container my-3 py-3">
-                <h1 className="text-center">Registro</h1>
-                <hr />
-                <div className="row my-4 h-100">
-                    <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-                        <form>
-                            <div className="form my-3">
-                                <label htmlFor="Name">Nombre completo</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="Name"
-                                    placeholder="Ingresa tu nombre"
-                                />
-                            </div>
-                            <div className="form my-3">
-                                <label htmlFor="Email">Correo electrónico</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    id="Email"
-                                    placeholder="ejemplo@correo.com"
-                                />
-                            </div>
-                            <div className="form my-3">
-                                <label htmlFor="Password">Contraseña</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="Password"
-                                    placeholder="Contraseña"
-                                />
-                            </div>
-                            <div className="my-3">
-                                <p>¿Ya tienes una cuenta? <Link to="/login" className="text-decoration-underline text-info">Iniciar sesión</Link></p>
-                            </div>
-                            <div className="text-center">
-                                <button className="my-2 mx-auto btn btn-dark" type="submit">
-                                    Registrarse
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <Footer />
-        </>
-    )
-}
+  const navigate = useNavigate();
 
-export default Register
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const newUser = { name, email, password };
+
+    // Guardamos los datos en localStorage simulando un "registro"
+    localStorage.setItem("registeredUser", JSON.stringify(newUser));
+
+    // Redirigimos al login
+    navigate("/login");
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className="container my-3 py-3">
+        <h1 className="text-center">Registro</h1>
+        <hr />
+        <div className="row my-4 h-100">
+          <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
+            <form onSubmit={handleRegister}>
+              <div className="my-3">
+                <label>Nombre completo</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="my-3">
+                <label>Correo electrónico</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="my-3">
+                <label>Contraseña</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <p>¿Ya tienes cuenta? <Link to="/login" className="text-info">Inicia sesión</Link></p>
+              <div className="text-center">
+                <button className="btn btn-dark" type="submit">
+                  Registrarse
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default Register;

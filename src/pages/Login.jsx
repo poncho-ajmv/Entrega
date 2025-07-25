@@ -1,8 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Footer, Navbar } from "../components";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { Navbar, Footer } from "../components";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+    // Verificamos los datos (muy básico, simulación sin backend)
+    if (
+      registeredUser &&
+      registeredUser.email === email &&
+      registeredUser.password === password
+    ) {
+      // Guardamos usuario activo
+      const user = { name: registeredUser.name, email };
+
+      dispatch({ type: "LOGIN", payload: user });
+      localStorage.setItem("user", JSON.stringify(user));
+
+      navigate("/");
+    } else {
+      alert("Credenciales incorrectas");
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -11,30 +41,30 @@ const Login = () => {
         <hr />
         <div className="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="my-3">
-                <label htmlFor="floatingInput">Correo electrónico</label>
+                <label>Correo electrónico</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="floatingInput"
-                  placeholder="ejemplo@correo.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="my-3">
-                <label htmlFor="floatingPassword">Contraseña</label>
+                <label>Contraseña</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="floatingPassword"
-                  placeholder="Contraseña"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
-              <div className="my-3">
-                <p>¿Nuevo aquí? <Link to="/register" className="text-decoration-underline text-info">Regístrate</Link> </p>
-              </div>
+              <p>¿Nuevo aquí? <Link to="/register" className="text-info">Regístrate</Link></p>
               <div className="text-center">
-                <button className="my-2 mx-auto btn btn-dark" type="submit">
+                <button className="btn btn-dark" type="submit">
                   Iniciar Sesión
                 </button>
               </div>
