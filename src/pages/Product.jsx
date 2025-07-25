@@ -87,7 +87,7 @@ const Producto = () => {
                 {producto.rating && producto.rating.rate}{" "}
                 <i className="fa fa-star"></i>
               </p>
-              <h3 className="display-6 my-4">${producto.price}</h3>
+              <h3 className="display-6 my-4">Q{producto.price}</h3>
               <p className="lead">{producto.description}</p>
               
               <div className="d-flex flex-wrap">
@@ -156,7 +156,7 @@ const Producto = () => {
                     <h5 className="card-title">
                       {item.title.substring(0, 15)}...
                     </h5>
-                    <p className="text-danger fw-bold">${item.price}</p>
+                    <p className="text-danger fw-bold">Q{item.price}</p>
                   </div>
                   <div className="card-body">
                     <button

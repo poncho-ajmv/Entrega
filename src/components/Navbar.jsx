@@ -11,7 +11,7 @@ const Navbar = () => {
                     <img 
                         src="/assets/mini-store.png" 
                         alt="Logo Tienda React" 
-                        height="40"
+                        height="120"
                         className="d-inline-block align-top"
                     />
                 </NavLink>
