@@ -108,7 +108,7 @@ const Cart = () => {
                               <p className="text-start text-md-center">
                                 <strong>
                                   <span className="text-muted">{item.qty}</span>{" "}
-                                  x ${item.price}
+                                  x Q{item.price}
                                 </strong>
                               </p>
                             </div>
@@ -129,18 +129,18 @@ const Cart = () => {
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Productos ({totalItems})<span>${Math.round(subtotal)}</span>
+                        Productos ({totalItems})<span>Q{Math.round(subtotal)}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                         Envío
-                        <span>${shipping}</span>
+                        <span>Q{shipping}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                         <div>
                           <strong>Total a pagar</strong>
                         </div>
                         <span>
-                          <strong>${Math.round(subtotal + shipping)}</strong>
+                          <strong>Q{Math.round(subtotal + shipping)}</strong>
                         </span>
                       </li>
                     </ul>
